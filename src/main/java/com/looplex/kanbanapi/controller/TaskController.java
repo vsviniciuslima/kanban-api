@@ -1,5 +1,6 @@
 package com.looplex.kanbanapi.controller;
 
+import com.github.fge.jsonpatch.JsonPatch;
 import com.looplex.kanbanapi.model.Task;
 import com.looplex.kanbanapi.model.paging.TaskPage;
 import com.looplex.kanbanapi.service.TaskService;
@@ -32,5 +33,10 @@ public class TaskController {
 
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
+    }
+
+    @PatchMapping(path = "/{id}", consumes = "application/json-patch+json")
+    public ResponseEntity<Task> updateTask(@PathVariable String id, @RequestBody JsonPatch patch) {
+        return taskService.updateTask(id, patch);
     }
 }

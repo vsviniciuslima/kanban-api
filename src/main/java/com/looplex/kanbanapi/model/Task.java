@@ -39,4 +39,8 @@ public class Task {
     private String[] tags;
 
     private void setId() { }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
