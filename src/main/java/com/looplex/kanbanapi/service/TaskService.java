@@ -9,20 +9,18 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Service
 public class TaskService {
 
     private final TaskRepository taskRepository;
 
     public Page<Task> getTasks(TaskPage taskPage) {
-
         Sort sort = Sort.by(taskPage.getSortDirection(), taskPage.getSortBy());
-        Pageable pageable = PageRequest.of(taskPage.getPageNumber(),
-                taskPage.getPageSize(), sort);
-        if(taskPage.getFilterArgument() != null) {
-            return taskRepository.filterByStatus(taskPage.getFilterArgument(), pageable);
-        }
-        return taskRepository.findAll(pageable);
+        Pageable pageable = PageRequest.of(taskPage.getPageNumber(), taskPage.getPageSize(), sort);
+        return taskPage.getStatus() == null ? taskRepository.findAll(pageable) : taskRepository.findByStatus(taskPage.getStatus(), pageable);
     }
 
     public Task addTask(Task task) {
@@ -31,5 +29,10 @@ public class TaskService {
 
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
+    }
+
+    public Long removeTask(Long id) {
+        this.taskRepository.deleteById(id);
+        return id;
     }
 }

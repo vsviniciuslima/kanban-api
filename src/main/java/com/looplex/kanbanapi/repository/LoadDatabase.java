@@ -1,7 +1,5 @@
 package com.looplex.kanbanapi.repository;
 
-import com.looplex.kanbanapi.model.Employee;
-import com.looplex.kanbanapi.model.Student;
 import com.looplex.kanbanapi.model.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,21 +41,21 @@ class LoadDatabase {
         };
     }*/
 
-    /*
+
     @Bean
     CommandLineRunner initDatabase(TaskRepository repository) {
 
         String[] tagsArray = {"Apple", "Banana", "Orange", "Grapes"};
 
         return args -> {
-            log.info("Preloading " + repository.save(new Task("description1", "document", "status", "responsible", "creationDate", "dueDate",tagsArray)));
-            log.info("Preloading " + repository.save(new Task("description2", "document", "status", "responsible", "creationDate", "dueDate",tagsArray)));
-            log.info("Preloading " + repository.save(new Task("description3", "document", "status", "responsible", "creationDate", "dueDate",tagsArray)));
-            log.info("Preloading " + repository.save(new Task("description4", "document", "status", "responsible", "creationDate", "dueDate",tagsArray)));
-            log.info("Preloading " + repository.save(new Task("description5", "document", "status", "responsible", "creationDate", "dueDate",tagsArray)));
-            log.info("Preloading " + repository.save(new Task("description6", "document", "status", "responsible", "creationDate", "dueDate",tagsArray)));
-            log.info("Preloading " + repository.save(new Task("description7", "document", "status", "responsible", "creationDate", "dueDate",tagsArray)));
-            log.info("Preloading " + repository.save(new Task("description8", "document", "status", "responsible", "creationDate", "dueDate",tagsArray)));
+            log.info("Preloading " + repository.save(new Task("description1", "document", "done", "responsible", "creationDate", "dueDate", tagsArray)));
+            log.info("Preloading " + repository.save(new Task("description2", "document", "waiting", "responsible", "creationDate", "dueDate", tagsArray)));
+            log.info("Preloading " + repository.save(new Task("description3", "document", "done", "responsible", "creationDate", "dueDate", tagsArray)));
+            log.info("Preloading " + repository.save(new Task("description4", "document", "waiting", "responsible", "creationDate", "dueDate", tagsArray)));
+            log.info("Preloading " + repository.save(new Task("description5", "document", "done", "responsible", "creationDate", "dueDate", tagsArray)));
+            log.info("Preloading " + repository.save(new Task("description6", "document", "waiting", "responsible", "creationDate", "dueDate", tagsArray)));
+            log.info("Preloading " + repository.save(new Task("description7", "document", "done", "responsible", "creationDate", "dueDate", tagsArray)));
+            log.info("Preloading " + repository.save(new Task("description8", "document", "waiting", "responsible", "creationDate", "dueDate", tagsArray)));
         };
-    }*/
+    }
 }

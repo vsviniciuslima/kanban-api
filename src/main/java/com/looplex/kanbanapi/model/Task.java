@@ -4,72 +4,16 @@ import lombok.*;
 
 import javax.persistence.*;
 
+@Data @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "task")
 public class Task {
 
     private @Id @GeneratedValue Long id;
 
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDocument() {
-        return document;
-    }
-
-    public void setDocument(String document) {
-        this.document = document;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getResponsible() {
-        return responsible;
-    }
-
-    public void setResponsible(String responsible) {
-        this.responsible = responsible;
-    }
-
-    public String getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public String getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    private @Column(name = "description") String description;
-    private @Column(name = "document") String document;
-    private @Column(name = "status") String status;
-    private @Column(name = "responsible") String responsible;
-    private @Column(name = "creationDate") String creationDate;
-    private @Column(name = "dueDate") String dueDate;
-    //private @Column(name = "tags") String[] tags;
+    @Column (name = "description")
+    private String description;
 
     public Task(String description, String document, String status, String responsible, String creationDate, String dueDate, String[] tags) {
         this.description = description;
@@ -78,12 +22,21 @@ public class Task {
         this.responsible = responsible;
         this.creationDate = creationDate;
         this.dueDate = dueDate;
-        //this.tags = tags;
+        this.tags = tags;
     }
 
-    public Task() {}
-
-
+    @Column (name = "document")
+    private String document;
+    @Column(name = "status")
+    private String status;
+    @Column(name = "responsible")
+    private String responsible;
+    @Column(name = "creationDate")
+    private String creationDate;
+    @Column(name = "dueDate")
+    private String dueDate;
+    @Column(name = "tags")
+    private String[] tags;
 
     private void setId() { }
 }

@@ -25,18 +25,12 @@ public class TaskController {
         return new ResponseEntity<>(taskService.addTask(task), HttpStatus.OK);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Long> deleteTask(@PathVariable Long id) {
+        return new ResponseEntity<>(taskService.removeTask(id), HttpStatus.OK);
+    }
 
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
-    /*
-    @GetMapping("/employees")
-    public CollectionModel<EntityModel<Task>> all() {
-
-        List<EntityModel<Task>> tasks = repository.findAll().stream()
-                .map(assembler::toModel)
-                .collect(Collectors.toList());
-
-        return CollectionModel.of(tasks, linkTo(methodOn(EmployeeController.class).all()).withSelfRel());
-    }*/
 }

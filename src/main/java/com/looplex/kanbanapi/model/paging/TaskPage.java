@@ -11,5 +11,5 @@ public class TaskPage {
     private int pageSize = 10;
     private Sort.Direction sortDirection = Sort.Direction.ASC;
     private String sortBy = "description";
-    private String filterArgument;
+    private String status;
 }
